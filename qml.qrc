@@ -6,5 +6,6 @@
         <file>pages/NewContactPage.qml</file>
         <file>images/plus.png</file>
         <file>components/IosIconButton.qml</file>
+        <file>images/magnifying-glass.png</file>
     </qresource>
 </RCC>

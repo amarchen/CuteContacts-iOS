@@ -40,10 +40,4 @@ ApplicationWindow {
         }
     }
 
-
-
-    Text {
-        text: qsTr("Hello World")
-        anchors.centerIn: parent
-    }
 }
