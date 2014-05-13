@@ -4,5 +4,7 @@
         <file>components/Page.qml</file>
         <file>pages/MainPage.qml</file>
         <file>pages/NewContactPage.qml</file>
+        <file>images/plus.png</file>
+        <file>components/IosIconButton.qml</file>
     </qresource>
 </RCC>
