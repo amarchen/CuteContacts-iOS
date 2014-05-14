@@ -54,12 +54,16 @@ Item {
             height: 44
             color: "#c9c9ce"
 
+
             Rectangle {
                 id: searchFieldWrapper
-                anchors.fill: parent
+                anchors.left: parent.left
+                anchors.right: cancelLabel.left
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
                 anchors.margins: 8
                 radius: 6
-                color: "#ffffff"
+                color: "white"
 
                 TextField {
                     id: searchField
@@ -73,7 +77,6 @@ Item {
                             radius: 6
                         }
                     }
-
                 }
 
                 Item {
@@ -104,6 +107,20 @@ Item {
                 }
             }
 
+            Label {
+                id: cancelLabel
+                anchors.left: parent.right
+                anchors.right: parent.right
+                anchors.rightMargin: 8
+                anchors.verticalCenter: parent.verticalCenter
+                clip: true
+                font.family: "Helvetica Neue"
+                font.pointSize: 18
+                color: "#0079ff"
+                text: "Cancel"
+            }
+
+
         }
         Item {
             id: contactList
@@ -127,6 +144,14 @@ Item {
                     target: searchTextPlaceholder
                     anchors.horizontalCenter: undefined
                     anchors.left: searchFieldWrapper.left
+                }
+                AnchorChanges {
+                    target: cancelLabel
+                    anchors.left: undefined
+                }
+                PropertyChanges {
+                    target: cancelLabel
+                    width: cancelLabel.implicitWidth
                 }
             }
         ]
