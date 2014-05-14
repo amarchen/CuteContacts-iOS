@@ -55,6 +55,7 @@ Item {
             color: "#c9c9ce"
 
             Rectangle {
+                id: searchFieldWrapper
                 anchors.fill: parent
                 anchors.margins: 8
                 radius: 6
@@ -63,6 +64,8 @@ Item {
                 TextField {
                     id: searchField
                     anchors.fill: parent
+                    anchors.leftMargin: 24
+
                     horizontalAlignment: Text.AlignLeft
 
                     style: TextFieldStyle {
@@ -71,31 +74,33 @@ Item {
                         }
                     }
 
-                    Item {
-                        id: searchTextPlaceholder
-                        anchors.verticalCenter: parent.verticalCenter
-                        anchors.horizontalCenter: parent.horizontalCenter
-                        anchors.topMargin: 4
-                        width: childrenRect.width
-                        height: glassIcon.height
+                }
 
-                        Image {
-                            id: glassIcon
-                            width: sourceSize.width / 2
-                            height: sourceSize.height / 2
-                            source: "qrc:///images/magnifying-glass.png"
-                        }
+                Item {
+                    id: searchTextPlaceholder
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.leftMargin: 8
+                    anchors.topMargin: 4
 
-                        Label {
-                            anchors.left: glassIcon.right
-                            anchors.leftMargin: 8
-                            anchors.verticalCenter: glassIcon.verticalCenter
-                            text: "Search"
-                            color: "#8e8e93"
-                            font.pixelSize: 14
-                        }
+                    width: childrenRect.width
+                    height: glassIcon.height
+
+                    Image {
+                        id: glassIcon
+                        width: sourceSize.width / 2
+                        height: sourceSize.height / 2
+                        source: "qrc:///images/magnifying-glass.png"
                     }
 
+                    Label {
+                        anchors.left: glassIcon.right
+                        anchors.leftMargin: 8
+                        anchors.verticalCenter: glassIcon.verticalCenter
+                        text: "Search"
+                        color: "#8e8e93"
+                        font.pixelSize: 14
+                    }
                 }
             }
 
@@ -121,7 +126,7 @@ Item {
                 AnchorChanges {
                     target: searchTextPlaceholder
                     anchors.horizontalCenter: undefined
-                    anchors.left: searchField.left
+                    anchors.left: searchFieldWrapper.left
                 }
             }
         ]
