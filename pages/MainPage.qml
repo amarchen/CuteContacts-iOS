@@ -103,6 +103,7 @@ Item {
                         text: "Search"
                         color: "#8e8e93"
                         font.pixelSize: 14
+                        visible: searchField.text.trim().length === 0
                     }
                 }
             }
@@ -153,7 +154,16 @@ Item {
                     target: cancelLabel
                     width: cancelLabel.implicitWidth
                 }
+            },
+            State {
+                name: ""
+                StateChangeScript {
+                    script: {
+                        Qt.inputMethod.hide()
+                    }
+                }
             }
+
         ]
 
         transitions: [
