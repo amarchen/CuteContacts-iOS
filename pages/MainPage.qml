@@ -61,7 +61,10 @@ Item {
                 anchors.right: cancelLabel.left
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
-                anchors.margins: 8
+                anchors.leftMargin: 8
+                anchors.rightMargin: 10
+                anchors.topMargin: 6
+                anchors.bottomMargin: 8
                 radius: 6
                 color: "white"
 
@@ -77,6 +80,26 @@ Item {
                             radius: 6
                         }
                     }
+
+                    Image {
+                        id: xbutton
+                        anchors.right: parent.right
+                        anchors.rightMargin: 8
+                        anchors.verticalCenter: parent.verticalCenter
+                        width: sourceSize.width / 2
+                        height: sourceSize.height / 2
+                        source: "qrc:///images/text-edit-x.png"
+                        visible: searchField.text.trim().length > 0
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                searchField.text = ""
+                            }
+                        }
+                    }
+
+
                 }
 
                 Item {

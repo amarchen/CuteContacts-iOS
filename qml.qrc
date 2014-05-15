@@ -7,5 +7,6 @@
         <file>images/plus.png</file>
         <file>components/IosIconButton.qml</file>
         <file>images/magnifying-glass.png</file>
+        <file>images/text-edit-x.png</file>
     </qresource>
 </RCC>
