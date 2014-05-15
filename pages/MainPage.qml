@@ -7,6 +7,10 @@ import "../components"
 Item {
     id: wholePage
 
+    onYChanged: {
+        console.log("MainPage's y ch to " + y)
+    }
+
     MouseArea {
         id: pageArea
         anchors.fill: parent
@@ -19,7 +23,7 @@ Item {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: parent.top
-            height: 44
+            height: 49
             color: "#f6f5f1"
 
             Label {
@@ -161,7 +165,7 @@ Item {
                 when: searchField.activeFocus
                 AnchorChanges {
                     target: titleBar
-                    anchors.top: undefined
+                    anchors.top: pageArea.top
                     anchors.bottom: pageArea.top
                 }
                 AnchorChanges {
@@ -197,7 +201,10 @@ Item {
             }
         ]
 
+    }
 
+    Component.onCompleted: {
+        console.log("MainPage completed. Platform OS is " + Qt.platform.os)
     }
 
 }

@@ -8,5 +8,6 @@
         <file>components/IosIconButton.qml</file>
         <file>images/magnifying-glass.png</file>
         <file>images/text-edit-x.png</file>
+        <file>images/status-bar-black.png</file>
     </qresource>
 </RCC>

@@ -11,6 +11,14 @@ ApplicationWindow {
 
     StackView {
         id: pageStack
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.topMargin: fakeStatusBar.height
+        anchors.bottom: parent.bottom
+        onYChanged: {
+            console.log("pageStack y ch to " + y)
+        }
 
         delegate: StackViewDelegate {
             pushTransition: StackViewTransition {
@@ -39,5 +47,19 @@ ApplicationWindow {
 //            anchors.fill: parent
         }
     }
+
+    Rectangle {
+        id: fakeStatusBar
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        height: Qt.platform.os == "ios" ? 0 : 15
+        color: "#f6f5f1"
+        Image {
+            anchors.fill: parent
+            source: "qrc:///images/status-bar-black.png"
+        }
+    }
+
 
 }
