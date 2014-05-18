@@ -7,22 +7,53 @@ Item {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
-        height: 44
-        color: "white"
+        height: 49
+        color: "#f6f5f1"
+
         Label {
             anchors.centerIn: parent
             text: "New Contact"
+            font.family: "Helvetica Neue"
+            font.bold: true
+            font.pointSize: 17
         }
 
-        ToolButton {
-            anchors.right: parent.right
+        Label {
+            id: cancelLabel
+            anchors.left: parent.left
+            anchors.leftMargin: 8
             anchors.verticalCenter: parent.verticalCenter
+            clip: true
+            font.family: "Helvetica Neue"
+            font.pointSize: 18
+            color: "#0079ff"
+            text: "Cancel"
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: pageStack.pop()
+            }
+
+        }
+
+        Label {
+            id: doneLabel
+            anchors.right: parent.right
+            anchors.rightMargin: 8
+            anchors.verticalCenter: parent.verticalCenter
+            clip: true
+            font.family: "Helvetica Neue"
+            font.pointSize: 18
+            color: "#0079ff"
             text: "Done"
-            onClicked: {
-                console.log("Done clicked")
-                pageStack.pop()
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: pageStack.pop()
             }
         }
+
+
     }
 
 }
