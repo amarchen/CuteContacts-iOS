@@ -34,7 +34,7 @@ Item {
                 font.pointSize: 17
             }
 
-            IosIconButton {
+            DimmableIconButton {
                 anchors.right: parent.right
                 anchors.rightMargin: 18
                 anchors.verticalCenter: parent.verticalCenter
@@ -42,12 +42,10 @@ Item {
                 width: 18
                 height: 18
 
-                iconSource: "qrc:///images/plus.png"
+                source: "qrc:///images/plus.png"
 
-                onClicked: {
-                    console.log("Plus clicked")
-                    pageStack.push("qrc:///pages/NewContactPage.qml")
-                }
+                onClicked: pageStack.push("qrc:///pages/NewContactPage.qml")
+
             }
         }
         Rectangle {
