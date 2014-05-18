@@ -133,7 +133,7 @@ Item {
                 }
             }
 
-            Label {
+            DimmableTextButton {
                 id: cancelLabel
                 anchors.left: parent.right
                 anchors.right: parent.right
@@ -143,7 +143,12 @@ Item {
                 font.family: "Helvetica Neue"
                 font.pointSize: 18
                 color: "#0079ff"
+                dimmingColor: "#c9c9ce"
                 text: "Cancel"
+                onClicked: {
+                    // better than changing state as clicked will care about everything related to focus change
+                    pageArea.clicked(null)
+                }
             }
 
 

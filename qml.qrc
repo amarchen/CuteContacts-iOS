@@ -10,5 +10,6 @@
         <file>images/text-edit-x.png</file>
         <file>images/status-bar-black.png</file>
         <file>components/DimmableIconButton.qml</file>
+        <file>components/DimmableTextButton.qml</file>
     </qresource>
 </RCC>
