@@ -11,5 +11,6 @@
         <file>images/status-bar-black.png</file>
         <file>components/DimmableIconButton.qml</file>
         <file>components/DimmableTextButton.qml</file>
+        <file>components/TitleBar.qml</file>
     </qresource>
 </RCC>

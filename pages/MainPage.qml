@@ -18,7 +18,7 @@ Item {
             pageArea.focus = true
         }
 
-        Rectangle {
+        TitleBar {
             id: titleBar
             anchors.left: parent.left
             anchors.right: parent.right
@@ -26,27 +26,11 @@ Item {
             height: 49
             color: "#f6f5f1"
 
-            Label {
-                anchors.centerIn: parent
-                text: "All Contacts"
-                font.family: "Helvetica Neue"
-                font.bold: true
-                font.pointSize: 17
-            }
+            title: "All Contacts"
 
-            DimmableIconButton {
-                anchors.right: parent.right
-                anchors.rightMargin: 18
-                anchors.verticalCenter: parent.verticalCenter
+            rightButtonIconSource: "qrc:///images/plus.png"
+            onRightButtonClicked: pageStack.push("qrc:///pages/NewContactPage.qml")
 
-                width: 18
-                height: 18
-
-                source: "qrc:///images/plus.png"
-
-                onClicked: pageStack.push("qrc:///pages/NewContactPage.qml")
-
-            }
         }
         Rectangle {
             id: searchBar

@@ -13,6 +13,7 @@ import QtQuick.Controls 1.1
  * @signal clicked When clicked
  *
  * @TODO: Mention missing dimming goes away on distant dragging in the docs
+ * @TODO: Extract dimming logic from here and DimminIconButton into a separate component?
  */
 Label {
     signal clicked
