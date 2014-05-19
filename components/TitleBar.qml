@@ -13,9 +13,9 @@ Rectangle {
 
     property alias title: mainLabel.text
     property alias rightButtonIconSource: rightIconButton.source
-    property string rightButtonText: ""
+    property alias rightButtonText: rightTextButton.text
     property alias leftButtonIconSource: leftIconButton.source
-    property string leftButtonText: ""
+    property alias leftButtonText: leftTextButton.text
     signal leftButtonClicked
     signal rightButtonClicked
 
@@ -23,9 +23,6 @@ Rectangle {
     signal leftControlClicked
     signal rightControlClicked
 
-    anchors.left: parent.left
-    anchors.right: parent.right
-    anchors.top: parent.top
     height: 49
     color: "#f6f5f1"
 
@@ -39,6 +36,8 @@ Rectangle {
 
     DimmableIconButton {
         id: leftIconButton
+        visible: source.toString().length > 0
+
         anchors.left: parent.left
         anchors.leftMargin: 18
         anchors.verticalCenter: parent.verticalCenter
@@ -51,6 +50,8 @@ Rectangle {
 
     DimmableIconButton {
         id: rightIconButton
+        visible: source.toString().length > 0
+
         anchors.right: parent.right
         anchors.rightMargin: 18
         anchors.verticalCenter: parent.verticalCenter
@@ -59,5 +60,34 @@ Rectangle {
         height: 18
         onClicked: titleBar.rightButtonClicked()
     }
+
+    DimmableTextButton {
+        id: leftTextButton
+        visible: text.length > 0
+
+        anchors.left: parent.left
+        anchors.leftMargin: 8
+        anchors.verticalCenter: parent.verticalCenter
+        clip: true
+        font.family: "Helvetica Neue"
+        font.pointSize: 18
+        color: "#0079ff"
+        onClicked: titleBar.leftButtonClicked()
+    }
+
+    DimmableTextButton {
+        id: rightTextButton
+        visible: text.length > 0
+
+        anchors.right: parent.right
+        anchors.rightMargin: 8
+        anchors.verticalCenter: parent.verticalCenter
+        clip: true
+        font.family: "Helvetica Neue"
+        font.pointSize: 18
+        color: "#0079ff"
+        onClicked: titleBar.rightButtonClicked()
+    }
+
 
 }

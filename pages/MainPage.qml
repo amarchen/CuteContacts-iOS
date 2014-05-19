@@ -23,7 +23,6 @@ Item {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: parent.top
-            height: 49
             color: "#f6f5f1"
 
             title: "All Contacts"
@@ -119,6 +118,7 @@ Item {
 
             DimmableTextButton {
                 id: cancelLabel
+
                 anchors.left: parent.right
                 anchors.right: parent.right
                 anchors.rightMargin: 8
