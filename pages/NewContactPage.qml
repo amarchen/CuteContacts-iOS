@@ -54,6 +54,18 @@ Item {
                 anchors.right: parent.right
                 placeholderText: "First"
             }
+            IOSTextField {
+                id: lastNameField
+                anchors.top: firstNameField.bottom
+                anchors.right: parent.right
+                placeholderText: "Last"
+            }
+            IOSTextField {
+                id: companyField
+                anchors.top: lastNameField.bottom
+                anchors.right: parent.right
+                placeholderText: "Company"
+            }
 
         }
 
