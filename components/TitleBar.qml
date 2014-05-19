@@ -23,7 +23,7 @@ Rectangle {
     signal leftControlClicked
     signal rightControlClicked
 
-    height: 49
+    height: 50
     color: "#f6f5f1"
 
     Label {
@@ -89,5 +89,13 @@ Rectangle {
         onClicked: titleBar.rightButtonClicked()
     }
 
+    Rectangle {
+        id: underline
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        height: 1
+        color: "#a3a3a6"
+    }
 
 }

@@ -36,7 +36,7 @@ Item {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: titleBar.bottom
-            height: 44
+            height: 43
             color: "#c9c9ce"
 
 
@@ -84,7 +84,6 @@ Item {
                         }
                     }
 
-
                 }
 
                 Item {
@@ -114,6 +113,7 @@ Item {
                         visible: searchField.text.trim().length === 0
                     }
                 }
+
             }
 
             DimmableTextButton {
@@ -133,6 +133,15 @@ Item {
                     // better than changing state as clicked will care about everything related to focus change
                     pageArea.clicked(null)
                 }
+            }
+
+            Rectangle {
+                id: underline
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                height: 1
+                color: "#bfbfc1"
             }
 
 
