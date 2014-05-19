@@ -74,7 +74,7 @@ Item {
                         width: sourceSize.width / 2
                         height: sourceSize.height / 2
                         source: "qrc:///images/text-edit-x.png"
-                        visible: searchField.text.trim().length > 0
+                        visible: searchField.text.length > 0
 
                         MouseArea {
                             anchors.fill: parent
