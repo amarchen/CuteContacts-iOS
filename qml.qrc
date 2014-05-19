@@ -12,5 +12,6 @@
         <file>components/DimmableIconButton.qml</file>
         <file>components/DimmableTextButton.qml</file>
         <file>components/TitleBar.qml</file>
+        <file>components/IOSTextField.qml</file>
     </qresource>
 </RCC>

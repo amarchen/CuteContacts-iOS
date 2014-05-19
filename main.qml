@@ -43,8 +43,11 @@ ApplicationWindow {
             }
         }
 
+//        initialItem: NewContactPage {
+
+//        }
+
         initialItem: MainPage {
-//            anchors.fill: parent
         }
     }
 
