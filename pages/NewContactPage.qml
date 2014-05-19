@@ -45,6 +45,29 @@ Item {
             height: 1000
             color: "white"
 
+            Rectangle {
+                id: addPhotoCircle
+                width: 60
+                height: width
+                anchors.top: parent.top
+                anchors.topMargin: 8
+                anchors.left: parent.left
+                anchors.leftMargin: 35
+                radius: width / 2
+                color: "transparent"
+                border.width: 1
+                border.color: "#c9c9ce"
+
+                Label {
+                    anchors.fill: parent
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    text: "add\nphoto"
+                    color: "#0079ff"
+                    font.pixelSize: 12
+                }
+            }
+
             /**
              * @TODO Cannot position text inisde the rectangle using style
              */
