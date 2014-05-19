@@ -37,7 +37,7 @@ Rectangle {
             width: sourceSize.width / 2
             height: sourceSize.height / 2
             source: "qrc:///images/text-edit-x.png"
-            visible: parent.text.length > 0
+            visible: parent.text.length > 0 && parent.focus === true
 
             MouseArea {
                 anchors.fill: parent
