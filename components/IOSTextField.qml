@@ -8,18 +8,30 @@ import QtQuick.Controls.Styles 1.1
 Rectangle {
     id: textFieldWrapper
 
-    property alias placeholderText: innerTextField.placeholderText
+    property alias placeholderText: fakePlaceholderTextComponent.text
 
     width: 208
     height: 44
     color: "white"
 
+//    Rectangle   {
+//        anchors.fill: parent
+//        color: "lightyellow"
+//        opacity: 0.2
+//    }
+
     TextField {
+
+//        Rectangle {
+//            anchors.fill: parent
+//            color: "lightgreen"
+//            opacity: 0.2
+//        }
+
         id: innerTextField
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         width: 204
-        placeholderText: "First"
         style: TextFieldStyle {
             font.family: "Helvetica Neue"
             font.pixelSize: 17
@@ -27,6 +39,39 @@ Rectangle {
             background: Rectangle {
                 color: "transparent"
             }
+        }
+
+        // workaround for the bug that sometimes positions cursor vertically a little wrong until first char input
+        onFocusChanged: {
+            if(focus) {
+                var origText = text
+                text = origText + " "
+                text = origText
+            }
+        }
+
+        // To fight against disappearing placeholder
+        Text {
+
+//            Rectangle {
+//                anchors.fill: parent
+//                color: "lightblue"
+//                opacity: 0.2
+//            }
+
+            id: fakePlaceholderTextComponent
+            anchors.fill: parent
+            anchors.leftMargin: 7
+            anchors.bottomMargin:6
+            font: parent.font
+            horizontalAlignment: parent.horizontalAlignment
+            verticalAlignment: parent.verticalAlignment
+            opacity: !parent.text.length ? 1 : 0
+            color: "darkgray"
+            clip: contentWidth > width;
+            elide: Text.ElideRight
+            renderType: Text.NativeRendering
+            Behavior on opacity { NumberAnimation { duration: 90 } }
         }
 
         Image {
