@@ -17,5 +17,6 @@
         <file>images/green-plus.png</file>
         <file>images/chevron.png</file>
         <file>components/PhonesBlock.qml</file>
+        <file>components/PhoneNumberEditor.qml</file>
     </qresource>
 </RCC>

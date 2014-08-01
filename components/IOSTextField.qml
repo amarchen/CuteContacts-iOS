@@ -7,8 +7,11 @@ import QtQuick.Controls.Styles 1.1
  */
 Rectangle {
     id: textFieldWrapper
+//    color: "green"
+//    opacity: 0.4
 
     property alias placeholderText: fakePlaceholderTextComponent.text
+    property alias showUnderline: underline.visible
 
     width: 208
     height: 44
@@ -24,11 +27,12 @@ Rectangle {
 
 //        Rectangle {
 //            anchors.fill: parent
-//            color: "lightgreen"
-//            opacity: 0.2
+//            color: "blue"
+//            opacity: 0.4
 //        }
 
         id: innerTextField
+        anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         width: 204

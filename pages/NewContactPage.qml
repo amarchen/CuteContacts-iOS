@@ -90,12 +90,19 @@ Item {
                 placeholderText: "Company"
             }
 
-            PhonesBlock {
+            PhoneNumberEditor {
                 anchors.top: companyField.bottom
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.topMargin: 56
             }
+
+//            PhonesBlock {
+//                anchors.top: companyField.bottom
+//                anchors.left: parent.left
+//                anchors.right: parent.right
+//                anchors.topMargin: 56
+//            }
 
         }
 
