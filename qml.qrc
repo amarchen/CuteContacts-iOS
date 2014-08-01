@@ -13,5 +13,8 @@
         <file>components/DimmableTextButton.qml</file>
         <file>components/TitleBar.qml</file>
         <file>components/IOSTextField.qml</file>
+        <file>images/red-minus.png</file>
+        <file>images/green-plus.png</file>
+        <file>images/chevron.png</file>
     </qresource>
 </RCC>
