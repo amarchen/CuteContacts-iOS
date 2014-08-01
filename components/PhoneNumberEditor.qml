@@ -67,6 +67,7 @@ Rectangle {
 
             placeholderText: "Phone"
             showUnderline: false
+            inputMethodHints: Qt.ImhDialableCharactersOnly
         }
 
         Rectangle {

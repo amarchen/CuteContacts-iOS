@@ -12,6 +12,7 @@ Rectangle {
 
     property alias placeholderText: fakePlaceholderTextComponent.text
     property alias showUnderline: underline.visible
+    property alias inputMethodHints: innerTextField.inputMethodHints
 
     width: 208
     height: 44
