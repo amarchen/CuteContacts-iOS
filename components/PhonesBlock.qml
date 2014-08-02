@@ -35,5 +35,9 @@ Item {
             }
         }
 
+        add: Transition {
+            NumberAnimation { properties: "x,y"; easing.type: Easing.InOutQuad; duration: 3000 }
+        }
+
     }
 }
