@@ -27,31 +27,53 @@ Rectangle {
         anchors.leftMargin: 10
         anchors.bottom: parent.bottom
 
-        Text {
-            id: phoneTypeButton
-            text: "home"
+        Rectangle {
+            id: buttonAndChevronBlock
             anchors.left: parent.left
             anchors.top: parent.top
-            anchors.topMargin: 6
-            width: 60
-            color: "#0079ff"
-        }
+            anchors.bottom: parent.bottom
+            width: childrenRect.width
 
-        Image {
-            id: chevronIcon
-            anchors.left: phoneTypeButton.right
-            anchors.verticalCenter: phoneTypeButton.verticalCenter
-            anchors.leftMargin: 20
-            width: 8
-            height: 12
+            Text {
+                id: phoneTypeButton
+                text: "home"
+                anchors.left: parent.left
+                anchors.top: parent.top
+                anchors.topMargin: 6
+                width: 60
+                color: "#0079ff"
+            }
 
-            source: "../images/chevron.png"
+            Image {
+                id: chevronIcon
+                anchors.left: phoneTypeButton.right
+                anchors.verticalCenter: phoneTypeButton.verticalCenter
+                anchors.leftMargin: 20
+                width: 8
+                height: 12
 
+                source: "../images/chevron.png"
+
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    console.log("phoneType selection start")
+                    pageStack.push("qrc:///pages/ListSelectorPage.qml",
+                                   {
+                                       leftButtonText: "Cancel",
+                                       title: "Label",
+                                       items: ["home", "work", "mobile", "company main", "work fax",
+                                               "home fax", "assistant", "pager", "car", "radio"]
+                                   })
+                }
+            }
         }
 
         Rectangle {
             id: verticalSeparator
-            anchors.left: chevronIcon.right
+            anchors.left: buttonAndChevronBlock.right
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             anchors.leftMargin: 4

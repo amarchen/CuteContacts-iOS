@@ -18,5 +18,7 @@
         <file>images/chevron.png</file>
         <file>components/PhonesBlock.qml</file>
         <file>components/PhoneNumberEditor.qml</file>
+        <file>pages/ListSelectorPage.qml</file>
+        <file>images/blue-checkmark.png</file>
     </qresource>
 </RCC>
