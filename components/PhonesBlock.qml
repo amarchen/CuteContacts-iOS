@@ -12,32 +12,48 @@ Item {
         id: phonesModel
     }
 
-    Column {
+    ListView {
+        id: listView
         width: parent.width
+        height: (count )*36 - (addTransition.running ? heightOfElementShown(
+                                                           addTransition.ViewTransition.targetIndexes[0],
+                                                           addTransition.ViewTransition.targetItems[0]) : 0)
+        clip: true
 
-        Repeater {
-            id: phonesRepeater
-            model: phonesModel
+        model: phonesModel
 
-            PhoneNumberEditor {
-                width: parent.width
-                type: text
-            }
+        // @return pixels
+        function heightOfElementShown(index, item) {
+            return - (item.y - index*36)
         }
 
-        AddPhoneLine {
+        delegate: PhoneNumberEditor {
             width: parent.width
-            visible: phonesRepeater.count !== _possibleTypes.length
-            onClicked: {
-                if(phonesRepeater.count < _possibleTypes.length) {
-                    phonesModel.append({text: _possibleTypes[phonesRepeater.count]})
-                }
-            }
+            z: -index
+            type: text
         }
 
         add: Transition {
-            NumberAnimation { properties: "x,y"; easing.type: Easing.InOutQuad; duration: 3000 }
+            id: addTransition
+            NumberAnimation {
+                properties: "y";
+                from: (addTransition.ViewTransition.targetIndexes[0] -1 )*36
+                to: addTransition.ViewTransition.targetIndexes[0]*36
+                duration: 200
+                easing.type: Easing.InOutQuad
+            }
         }
 
+    }
+
+    AddPhoneLine {
+        anchors.top: listView.bottom
+        width: parent.width
+        visible: listView.count !== _possibleTypes.length
+        onClicked: {
+            if(listView.count < _possibleTypes.length) {
+                phonesModel.append({text: _possibleTypes[listView.count]})
+            }
+        }
     }
 }
