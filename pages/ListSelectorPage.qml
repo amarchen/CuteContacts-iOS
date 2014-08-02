@@ -13,6 +13,14 @@ Item {
     // List of strings to display
     property var items: []
 
+    // when shown list positions selection to this text (if present in the model)
+    // whenever a different item is selected, this text is updated
+    property string selectedText
+
+    signal selectionCompleted(string selecteText)
+
+    property bool _initialized: false
+
     TitleBar {
         id: titleBar
         anchors.left: parent.left
@@ -26,8 +34,7 @@ Item {
         onLeftButtonClicked: pageStack.pop()
 
         rightButtonText: "Done"
-        onRightButtonClicked: console.log("NCP: Done button clicked")
-
+        onRightButtonClicked: completeSelection()
     }
 
     ListModel {
@@ -44,6 +51,7 @@ Item {
     }
 
     ListView {
+        id: listView
         anchors.top: titleBar.bottom
         anchors.left: parent.left
         anchors.right: parent.right
@@ -103,14 +111,32 @@ Item {
         }
 
         onCurrentIndexChanged: {
-            console.log("currentIndex changed to " + currentIndex)
+            if(_initialized) {
+                selectedText = itemsModel.get(currentIndex).text
+                completeSelection()
+            }
         }
     }
 
+    // pops the view first signaling about the current selection to whoever is interested
+    function completeSelection() {
+        selectionCompleted(selectedText)
+        pageStack.pop()
+    }
+
+    onSelectedTextChanged: {
+        console.log("LSP: selectedText ch to " + selectedText)
+    }
+
     Component.onCompleted: {
+        _initialized = false
         itemsModel.clear()
         for(var i=0; i < items.length; i++) {
             itemsModel.append({text: items[i]})
+            if(selectedText == items[i]) {
+                listView.currentIndex = i
+            }
         }
+        _initialized = true
     }
 }

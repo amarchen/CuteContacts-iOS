@@ -59,14 +59,21 @@ Rectangle {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    console.log("phoneType selection start")
+                    function selectionCompletionHandler(selectedText) {
+                        phoneTypeButton.text = selectedText
+                        pageStack.currentItem.selectionCompleted.disconnect(selectionCompletionHandler)
+                    }
+
                     pageStack.push("qrc:///pages/ListSelectorPage.qml",
                                    {
                                        leftButtonText: "Cancel",
                                        title: "Label",
                                        items: ["home", "work", "mobile", "company main", "work fax",
-                                               "home fax", "assistant", "pager", "car", "radio"]
+                                               "home fax", "assistant", "pager", "car", "radio"],
+                                       selectedText: phoneTypeButton.text,
                                    })
+                    pageStack.currentItem.selectionCompleted.connect(selectionCompletionHandler)
+
                 }
             }
         }
