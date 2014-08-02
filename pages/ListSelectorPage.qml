@@ -68,7 +68,7 @@ Item {
                 id: itemText
                 anchors.left: parent.left
                 anchors.verticalCenter: parent.verticalCenter
-                anchors.leftMargin: 12
+                anchors.leftMargin: 10
                 font.pixelSize: 16
                 text: model.text
             }
@@ -82,10 +82,28 @@ Item {
                 height: 1
                 color: "#cccccc"
             }
+
+            Image {
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.rightMargin: 10
+                width: sourceSize.width / 2
+                height: sourceSize.height / 2
+                visible: parent.ListView.isCurrentItem
+
+                source: "../images/blue-checkmark.png"
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    parent.ListView.view.currentIndex = index
+                }
+            }
         }
 
-        highlight: Image {
-            source: "../images/blue-checkmark.png"
+        onCurrentIndexChanged: {
+            console.log("currentIndex changed to " + currentIndex)
         }
     }
 
