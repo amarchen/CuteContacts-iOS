@@ -112,8 +112,4 @@ Rectangle {
 
     }
 
-    Component.onCompleted: {
-        console.log("PNE completed")
-    }
-
 }

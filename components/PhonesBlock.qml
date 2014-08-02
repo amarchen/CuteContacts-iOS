@@ -1,52 +1,39 @@
 import QtQuick 2.0
 
-Rectangle {
-    id: addPhoneBlock
+
+Item {
     height: childrenRect.height
 
-    Item {
-        id: addPhoneRow
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.top
-        height: childrenRect.height
+    property var _possibleTypes: ["home", "work", "mobile", "company main", "work fax",
+        "home fax", "assistant", "pager", "car", "radio"]
 
-        Image {
-            id: phonePlus
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-            source: "../images/green-plus.png"
-            width: 20
-            height: 20
-        }
 
-        Text {
-            id: addPhoneButton
-            anchors.left: phonePlus.right
-            anchors.verticalCenter: phonePlus.verticalCenter
-            anchors.leftMargin: 10
-            anchors.right: parent.right
-            text: "add phone"
-            color: "#0079ff"
-        }
-
-        Rectangle {
-            id: underline
-            anchors.top: addPhoneButton.bottom
-            anchors.left: addPhoneButton.left
-            anchors.right: addPhoneButton.right
-
-            anchors.topMargin: 12
-            height: 1
-            color: "#cccccc"
-        }
+    ListModel {
+        id: phonesModel
     }
 
-    MouseArea {
-        id: addPhoneArea
-        anchors.fill: parent
-        onClicked: {
-            console.log("add phone clicked")
+    Column {
+        width: parent.width
+
+        Repeater {
+            id: phonesRepeater
+            model: phonesModel
+
+            PhoneNumberEditor {
+                width: parent.width
+                type: text
+            }
         }
+
+        AddPhoneLine {
+            width: parent.width
+            visible: phonesRepeater.count !== _possibleTypes.length
+            onClicked: {
+                if(phonesRepeater.count < _possibleTypes.length) {
+                    phonesModel.append({text: _possibleTypes[phonesRepeater.count]})
+                }
+            }
+        }
+
     }
 }

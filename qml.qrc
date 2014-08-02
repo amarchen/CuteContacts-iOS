@@ -20,5 +20,6 @@
         <file>components/PhoneNumberEditor.qml</file>
         <file>pages/ListSelectorPage.qml</file>
         <file>images/blue-checkmark.png</file>
+        <file>components/AddPhoneLine.qml</file>
     </qresource>
 </RCC>

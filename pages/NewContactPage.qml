@@ -83,6 +83,7 @@ Item {
                 anchors.right: parent.right
                 placeholderText: "Last"
             }
+
             IOSTextField {
                 id: companyField
                 anchors.top: lastNameField.bottom
@@ -90,19 +91,13 @@ Item {
                 placeholderText: "Company"
             }
 
-            PhoneNumberEditor {
+            PhonesBlock {
+                id: phonesBlock
                 anchors.top: companyField.bottom
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.topMargin: 56
             }
-
-//            PhonesBlock {
-//                anchors.top: companyField.bottom
-//                anchors.left: parent.left
-//                anchors.right: parent.right
-//                anchors.topMargin: 56
-//            }
 
         }
 
