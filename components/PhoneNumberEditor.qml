@@ -3,8 +3,7 @@ import QtQuick 2.0
 Rectangle {
     id: wholeEditor
     height: 36
-//    color: "lightblue"
-//    opacity: 0.7
+    property alias type: phoneTypeButton.text
 
     Image {
         id: deleteIcon
@@ -40,7 +39,9 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.top: parent.top
                 anchors.topMargin: 6
-                width: 60
+                width: 75
+                clip: true
+                elide: Text.ElideRight
                 color: "#0079ff"
             }
 
@@ -48,7 +49,7 @@ Rectangle {
                 id: chevronIcon
                 anchors.left: phoneTypeButton.right
                 anchors.verticalCenter: phoneTypeButton.verticalCenter
-                anchors.leftMargin: 20
+                anchors.leftMargin: 5
                 width: 8
                 height: 12
 
@@ -109,6 +110,10 @@ Rectangle {
             color: "#cccccc"
         }
 
+    }
+
+    Component.onCompleted: {
+        console.log("PNE completed")
     }
 
 }
