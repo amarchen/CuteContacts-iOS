@@ -1,8 +1,10 @@
 import QtQuick 2.0
 
+import "../settings.js" as Settings
+
 Rectangle {
     id: wholeEditor
-    height: 36
+    height: Settings.pne_height
     property alias type: phoneTypeButton.text
 
     onFocusChanged: {
@@ -11,7 +13,8 @@ Rectangle {
 
     Image {
         id: deleteIcon
-        anchors.top: parent.top
+//        anchors.top: parent.top
+        anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: 10
         width: 24
@@ -41,8 +44,7 @@ Rectangle {
                 id: phoneTypeButton
                 text: "home"
                 anchors.left: parent.left
-                anchors.top: parent.top
-                anchors.topMargin: 6
+                anchors.verticalCenter: parent.verticalCenter
                 width: 75
                 clip: true
                 elide: Text.ElideRight
@@ -83,11 +85,13 @@ Rectangle {
             }
         }
 
+        // @TODO add some proper gradient
         Rectangle {
             id: verticalSeparator
             anchors.left: buttonAndChevronBlock.right
             anchors.top: parent.top
             anchors.bottom: parent.bottom
+            anchors.topMargin: 4
             anchors.leftMargin: 4
 
             width: 1
@@ -110,6 +114,7 @@ Rectangle {
             anchors.top: parent.bottom
             anchors.left: parent.left
             anchors.right: parent.right
+            anchors.topMargin: -1
 
             height: 1
             color: "#cccccc"

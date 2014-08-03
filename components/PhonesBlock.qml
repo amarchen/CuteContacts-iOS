@@ -1,6 +1,8 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.1
 
+import "../settings.js" as Settings
+
 Item {
     height: childrenRect.height
 
@@ -16,7 +18,7 @@ FocusScope{
     ListView {
         id: listView
         width: parent.width
-        height: (count )*36 - (addTransition.running ? heightOfElementShown(
+        height: (count )*Settings.pne_height - (addTransition.running ? heightOfElementShown(
                                                            addTransition.ViewTransition.targetIndexes[0],
                                                            addTransition.ViewTransition.targetItems[0]) : 0)
         clip: true
@@ -25,7 +27,7 @@ FocusScope{
 
         // @return pixels
         function heightOfElementShown(index, item) {
-            return - (item.y - index*36)
+            return - (item.y - index*Settings.pne_height)
         }
 
         delegate: PhoneNumberEditor {
@@ -43,8 +45,8 @@ FocusScope{
             id: addTransition
             NumberAnimation {
                 properties: "y";
-                from: (addTransition.ViewTransition.targetIndexes[0] -1 )*36
-                to: addTransition.ViewTransition.targetIndexes[0]*36
+                from: (addTransition.ViewTransition.targetIndexes[0] -1 )*Settings.pne_height
+                to: addTransition.ViewTransition.targetIndexes[0]*Settings.pne_height
                 duration: 200
                 easing.type: Easing.InOutQuad
             }

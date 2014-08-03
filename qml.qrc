@@ -21,5 +21,6 @@
         <file>pages/ListSelectorPage.qml</file>
         <file>images/blue-checkmark.png</file>
         <file>components/AddPhoneLine.qml</file>
+        <file>settings.js</file>
     </qresource>
 </RCC>
