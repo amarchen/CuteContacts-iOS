@@ -22,5 +22,6 @@
         <file>images/blue-checkmark.png</file>
         <file>components/AddPhoneLine.qml</file>
         <file>settings.js</file>
+        <file>pages/NotYetImplemented.qml</file>
     </qresource>
 </RCC>

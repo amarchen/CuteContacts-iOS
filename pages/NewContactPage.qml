@@ -78,10 +78,15 @@ Item {
                     color: "#0079ff"
                     font.pixelSize: 12
                 }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: pageStack.push("qrc:///pages/NotYetImplemented.qml")
+                }
             }
 
             /**
-             * @TODO Cannot position text inisde the rectangle using style
+             * @TODO Cannot position text inside the rectangle using style
              */
             IOSTextField {
                 id: firstNameField

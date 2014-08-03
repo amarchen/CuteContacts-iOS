@@ -21,6 +21,11 @@ Rectangle {
         height: 26
 
         source: "../images/red-minus.png"
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: pageStack.push("qrc:///pages/NotYetImplemented.qml")
+        }
     }
 
     Rectangle {
