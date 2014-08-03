@@ -5,6 +5,10 @@ Rectangle {
     height: 36
     property alias type: phoneTypeButton.text
 
+    onFocusChanged: {
+        phoneNumberField.focus = focus
+    }
+
     Image {
         id: deleteIcon
         anchors.top: parent.top
@@ -90,6 +94,7 @@ Rectangle {
             color: "#cccccc"
         }
         IOSTextField {
+            id: phoneNumberField
             anchors.left: verticalSeparator.right
             anchors.top: parent.top
             anchors.right: parent.right

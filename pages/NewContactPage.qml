@@ -12,6 +12,8 @@ import "../components"
  */
 
 Item {
+    focus: true
+
     TitleBar {
         id: titleBar
         anchors.left: parent.left
@@ -35,6 +37,8 @@ Item {
         anchors.top: titleBar.bottom
         anchors.bottom: parent.bottom
 
+
+
 //        style: ScrollViewStyle {
 //            transientScrollBars: true
 //        }
@@ -44,6 +48,14 @@ Item {
             width: mainScrollView.width
             height: 1000
             color: "white"
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    parent.focus = true
+                    Qt.inputMethod.hide()
+                }
+            }
 
             Rectangle {
                 id: addPhotoCircle

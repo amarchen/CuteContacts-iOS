@@ -14,6 +14,15 @@ Rectangle {
     property alias showUnderline: underline.visible
     property alias inputMethodHints: innerTextField.inputMethodHints
 
+    onFocusChanged: {
+        if(focus) {
+            innerTextField.focus = true
+            innerTextField.forceActiveFocus()
+        } else {
+            innerTextField.focus = false
+        }
+    }
+
     width: 208
     height: 44
     color: "white"
@@ -87,7 +96,7 @@ Rectangle {
             width: sourceSize.width / 2
             height: sourceSize.height / 2
             source: "qrc:///images/text-edit-x.png"
-            visible: parent.text.length > 0 && parent.focus === true
+            visible: parent.text.length > 0 && parent.activeFocus === true
 
             MouseArea {
                 anchors.fill: parent

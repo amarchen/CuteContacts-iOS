@@ -1,12 +1,13 @@
 import QtQuick 2.0
-
+import QtQuick.Controls 1.1
 
 Item {
     height: childrenRect.height
 
     property var _possibleTypes: ["home", "work", "mobile", "company main", "work fax",
         "home fax", "assistant", "pager", "car", "radio"]
-
+FocusScope{
+    anchors.fill: parent
 
     ListModel {
         id: phonesModel
@@ -28,9 +29,14 @@ Item {
         }
 
         delegate: PhoneNumberEditor {
+            id: editorDelegate
             width: parent.width
             z: -index
             type: text
+
+            Component.onCompleted: {
+                editorDelegate.focus = true
+            }
         }
 
         add: Transition {
@@ -56,4 +62,6 @@ Item {
             }
         }
     }
+}
+
 }
