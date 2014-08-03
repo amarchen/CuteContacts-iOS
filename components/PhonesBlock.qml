@@ -25,6 +25,8 @@ FocusScope{
 
         model: phonesModel
 
+        interactive: false
+
         // @return pixels
         function heightOfElementShown(index, item) {
             return - (item.y - index*Settings.pne_height)
