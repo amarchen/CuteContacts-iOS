@@ -14,12 +14,22 @@ Rectangle {
     property alias showUnderline: underline.visible
     property alias inputMethodHints: innerTextField.inputMethodHints
 
+    // easiest way to notify about it that I found..
+    signal lostActiveFocus
+
     onFocusChanged: {
         if(focus) {
             innerTextField.focus = true
             innerTextField.forceActiveFocus()
         } else {
             innerTextField.focus = false
+        }
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            console.log("ITF: clicked")
         }
     }
 
@@ -61,6 +71,11 @@ Rectangle {
                 var origText = text
                 text = origText + " "
                 text = origText
+            }
+        }
+        onActiveFocusChanged: {
+            if(!activeFocus) {
+                lostActiveFocus()
             }
         }
 

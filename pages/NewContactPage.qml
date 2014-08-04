@@ -12,7 +12,11 @@ import "../components"
  */
 
 Item {
+    id: wholePage
     focus: true
+
+    // when not empty, clicks are blocked for everything except the controls inside
+    property var exclusiveControls: []
 
     TitleBar {
         id: titleBar
@@ -49,9 +53,53 @@ Item {
             height: 1000
             color: "white"
 
+            /** Eats mouse events for the **/
+            Rectangle {
+                id: excluder
+                anchors.fill: parent
+                color: "transparent"
+                z: 1000
+                visible: exclusiveControls && exclusiveControls.length > 0
+                MouseArea {
+                    id: excluderArea
+                    anchors.fill: parent
+                    onPressed: {
+                        if(withinTheControls(excluderArea, mouse.x, mouse.y, exclusiveControls)) {
+                            mouse.accepted = false
+                        }
+                    }
+
+                    onClicked: {
+                        // okay, not so good binding. Just go over all controls willing to be exclusive and
+                        // cancel this wish of theirs
+                        if(!exclusiveControls) return;
+                        while(exclusiveControls.length) {
+                            exclusiveControls.pop().state = ""
+                        }
+                    }
+
+                    /**
+                     * @return true if x,y are within one of the controls. False otherwise
+                     * @param x,y coords in the coord system of eventOriginControl
+                     * @param controls List if Items to check if coordinates re within them or not
+                     */
+                    function withinTheControls(eventOriginControl, x, y, controls) {
+                        for(var i=0; i < controls.length; i++) {
+                            var translatedCoords = eventOriginControl.mapToItem(controls[i], x, y)
+                            if(controls[i].contains(Qt.point(translatedCoords.x, translatedCoords.y))) {
+                                return true
+                            }
+                        }
+                        return false;
+                    }
+
+                }
+            }
+
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
+                    console.log("NCP: background clicked")
                     parent.focus = true
                     Qt.inputMethod.hide()
                 }
@@ -114,6 +162,31 @@ Item {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.topMargin: 56
+
+                onStartedControlEditing: {
+                    // trick to emit property signal
+                    var tmpArray = exclusiveControls
+                    if(!tmpArray) tmpArray = []
+                    exclusiveControls = null
+
+                    tmpArray.push(control)
+                    exclusiveControls = tmpArray
+                }
+
+               onFinishedControlEditing: {
+                   // trick to emit property signal
+                   var tmpArray = exclusiveControls
+                   if(!tmpArray) tmpArray = []
+                   exclusiveControls = null
+
+                   for(var i=0; i<tmpArray.length; i++) {
+                       if(tmpArray[i] === control) {
+                           tmpArray.splice(i, 1)
+                           i = i - 1
+                       }
+                   }
+                   exclusiveControls = tmpArray
+               }
             }
 
         }

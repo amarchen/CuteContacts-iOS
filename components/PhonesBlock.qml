@@ -8,8 +8,11 @@ Item {
 
     property var _possibleTypes: ["home", "work", "mobile", "company main", "work fax",
         "home fax", "assistant", "pager", "car", "radio"]
-FocusScope{
-    anchors.fill: parent
+
+    // Are signal when exclusive editing requested/released for a particular control
+    // I.e. when clicks elsewhere should only cancel editing, but be ignored otherwise
+    signal startedControlEditing(var control)
+    signal finishedControlEditing(var control)
 
     ListModel {
         id: phonesModel
@@ -41,6 +44,14 @@ FocusScope{
             Component.onCompleted: {
                 editorDelegate.focus = true
             }
+
+            onStateChanged: {
+                if(state == "deletionQuery") {
+                    startedControlEditing(editorDelegate)
+                } else {
+                    finishedControlEditing(editorDelegate)
+                }
+            }
         }
 
         add: Transition {
@@ -66,6 +77,4 @@ FocusScope{
             }
         }
     }
-}
-
 }
