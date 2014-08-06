@@ -6,6 +6,9 @@ Rectangle {
     id: wholeEditor
     property alias type: phoneTypeButton.text
 
+    //  user clicked delete button
+    signal selfDeletionWanted
+
     height: Settings.pne_height
 
     onFocusChanged: {
@@ -32,7 +35,9 @@ Rectangle {
 
         MouseArea {
             anchors.fill: parent
-            onClicked: pageStack.push("qrc:///pages/NotYetImplemented.qml")
+            onClicked: {
+                selfDeletionWanted()
+            }
         }
     }
     Rectangle {

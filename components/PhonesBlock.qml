@@ -52,6 +52,13 @@ Item {
                     finishedControlEditing(editorDelegate)
                 }
             }
+
+            onSelfDeletionWanted: {
+                // okay, in a real app we'd need to make it be called from onStateChanged
+                // (not state change happens after control is destroyed already)
+                finishedControlEditing(editorDelegate)
+                phonesModel.remove(index)
+            }
         }
 
         add: Transition {
@@ -60,6 +67,18 @@ Item {
                 properties: "y";
                 from: (addTransition.ViewTransition.targetIndexes[0] -1 )*Settings.pne_height
                 to: addTransition.ViewTransition.targetIndexes[0]*Settings.pne_height
+                duration: 200
+                easing.type: Easing.InOutQuad
+            }
+        }
+
+
+        remove: Transition {
+            id: removeTransition
+            NumberAnimation {
+                properties: "y";
+                from: (removeTransition.ViewTransition.targetIndexes[0] )*Settings.pne_height
+                to: (removeTransition.ViewTransition.targetIndexes[0] -1)*Settings.pne_height
                 duration: 200
                 easing.type: Easing.InOutQuad
             }
