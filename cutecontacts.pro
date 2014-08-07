@@ -11,3 +11,9 @@ QML_IMPORT_PATH =
 
 # Default rules for deployment.
 include(deployment.pri)
+
+OBJECTIVE_SOURCES += \
+    objectiveutils.mm
+
+HEADERS += \
+    objectiveutils.h
