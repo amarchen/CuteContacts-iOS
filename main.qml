@@ -3,11 +3,11 @@ import QtQuick.Controls 1.1
 
 import "pages"
 
-ApplicationWindow {
+Item {
     visible: true
     width: 320
     height: 568
-    title: qsTr("Hello World")
+//    title: qsTr("Hello World")
 
     StackView {
         id: pageStack
