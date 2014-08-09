@@ -235,6 +235,56 @@ Item {
                 }
 
             }
+
+            // or ignore if such section is not found
+            // real app would position to the closest present section probably
+            function scrollToSection(section) {
+                for(var i=0; i < contactsModel.count; i++) {
+                    if(contactsModel.get(i).firstName.substr(0, 1).toUpperCase() == section) {
+                        positionViewAtIndex(i, ListView.Beginning)
+                        break
+                    }
+                }
+            }
+        }
+
+        // Touch area is wider than image
+        Item {
+            id: listScrollerHolder
+            anchors.top: contactList.top
+            anchors.bottom: contactList.bottom
+            anchors.right: contactList.right
+            width: 24
+
+            Image {
+                id: listScroller
+                anchors.top: parent.top
+                anchors.bottom: parent.bottom
+                anchors.right: parent.right
+                fillMode: Image.PreserveAspectFit
+
+                source: "../images/alphabet-scroller-labels.png"
+            }
+            MouseArea {
+                anchors.fill: parent
+                onPositionChanged: {
+                    contactList.scrollToSection(sectionForMouseY(mouse.y))
+                }
+
+                function sectionForMouseY(mouseY) {
+                    // empty areas at top and bottom should be treated as first/last letters
+                    var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
+                                    "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+                    var topBlancHeight = 10
+                    var bottomBlancHeight = 20
+
+                    if(mouseY < topBlancHeight) return alphabet[0]
+                    if(mouseY > height - bottomBlancHeight) return alphabet[alphabet.length-1]
+
+                    var letterIdx = Math.floor((mouseY-topBlancHeight) / (height / 26))
+                    return alphabet[letterIdx]
+                }
+            }
         }
 
         states: [
