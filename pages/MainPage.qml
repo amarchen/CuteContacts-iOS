@@ -150,9 +150,11 @@ Item {
         ListModel {
             id: contactsModel
             ListElement { firstName: "John"; lastName: "Smith"; mobileNumber: "504-621-8927" }
+            ListElement { firstName: "Jane"; lastName: "Doe"; mobileNumber: "504-621-8927" }
             ListElement { firstName: "James"; lastName: "Butt"; mobileNumber: "504-621-8927" }
             ListElement { firstName: "Josephine"; lastName: "Darakjy"; mobileNumber: "504-621-8927" }
             ListElement { firstName: "Art"; lastName: "Venere"; mobileNumber: "504-621-8927" }
+            ListElement { firstName: "Arthur"; lastName: "King"; mobileNumber: "504-621-8927" }
             ListElement { firstName: "Lenna"; lastName: "Paprocki"; mobileNumber: "504-621-8927" }
             ListElement { firstName: "Donette"; lastName: "Foller"; mobileNumber: "504-621-8927" }
             ListElement { firstName: "Simona"; lastName: "Morasca"; mobileNumber: "504-621-8927" }
@@ -166,6 +168,12 @@ Item {
             anchors.right: parent.right
             anchors.top: searchBar.bottom
             anchors.bottom: parent.bottom
+
+            section.property: "firstName"
+            section.criteria: ViewSection.FirstCharacter
+            section.labelPositioning: ViewSection.InlineLabels | ViewSection.CurrentLabelAtStart
+            clip: true
+
             delegate: Rectangle {
                 width: parent.width
                 height: 40
@@ -176,7 +184,7 @@ Item {
                     anchors.rightMargin: 5
                     verticalAlignment: Text.AlignVCenter
                     font.pixelSize: 14
-                    text: "<b>" + firstName + "</b> " + lastName
+                    text: "<b>" + firstName + "</b> " + lastName + ": " + parent.ListView.section + "-" + parent.ListView.nextSection
                 }
                 Rectangle {
                     id: underliner
@@ -185,6 +193,37 @@ Item {
                     anchors.top: contactNameLabel.bottom
                     anchors.topMargin: -1
                     height: 1
+
+                    // next section is undefined for the very first element and.. somehow for the very first delegate
+                    // but for the prototyping purposes we just make sure there's more than one element in first section
+                    visible: (!parent.ListView.nextSection) || parent.ListView.section == parent.ListView.nextSection
+
+                    color: "#cccccc"
+                }
+            }
+
+            section.delegate: Rectangle {
+                width: parent.width
+                height: 30
+                color: "#eeeeee"
+                Text {
+                    id: sectionLabel
+                    anchors.fill: parent
+                    anchors.leftMargin: 10
+                    anchors.rightMargin: 5
+                    font.bold: true
+                    font.pixelSize: 14
+                    verticalAlignment: Text.AlignVCenter
+                    text: section
+                }
+                Rectangle {
+                    id: overliner
+                    anchors.left: parent.left
+                    anchors.right: sectionLabel.right
+                    anchors.top: sectionLabel.top
+                    anchors.topMargin: 1
+                    height: 1
+
                     color: "#cccccc"
                 }
             }
