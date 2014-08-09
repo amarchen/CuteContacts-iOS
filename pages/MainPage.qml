@@ -203,6 +203,10 @@ Item {
                         return currSection != nextSection
                     }
                 }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: pageStack.push("qrc:///pages/NotYetImplemented.qml")
+                }
             }
 
             section.delegate: Rectangle {
