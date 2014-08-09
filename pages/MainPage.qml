@@ -146,13 +146,61 @@ Item {
 
 
         }
-        Item {
+
+        ListModel {
+            id: contactsModel
+            ListElement { firstName: "John"; lastName: "Smith"; mobileNumber: "504-621-8927" }
+            ListElement { firstName: "James"; lastName: "Butt"; mobileNumber: "504-621-8927" }
+            ListElement { firstName: "Josephine"; lastName: "Darakjy"; mobileNumber: "504-621-8927" }
+            ListElement { firstName: "Art"; lastName: "Venere"; mobileNumber: "504-621-8927" }
+            ListElement { firstName: "Lenna"; lastName: "Paprocki"; mobileNumber: "504-621-8927" }
+            ListElement { firstName: "Donette"; lastName: "Foller"; mobileNumber: "504-621-8927" }
+            ListElement { firstName: "Simona"; lastName: "Morasca"; mobileNumber: "504-621-8927" }
+            ListElement { firstName: "Mitsue"; lastName: "Tollner"; mobileNumber: "504-621-8927" }
+        }
+
+        ListView {
             id: contactList
+            model: contactsModel
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: searchBar.bottom
             anchors.bottom: parent.bottom
-    //        color: "white"
+            delegate: Rectangle {
+                width: parent.width
+                height: 40
+                Text {
+                    id: contactNameLabel
+                    anchors.fill: parent
+                    anchors.leftMargin: 10
+                    anchors.rightMargin: 5
+                    verticalAlignment: Text.AlignVCenter
+                    font.pixelSize: 14
+                    text: "<b>" + firstName + "</b> " + lastName
+                }
+                Rectangle {
+                    id: underliner
+                    anchors.left: contactNameLabel.left
+                    anchors.right: contactNameLabel.right
+                    anchors.top: contactNameLabel.bottom
+                    anchors.topMargin: -1
+                    height: 1
+                    color: "#cccccc"
+                }
+            }
+
+            footer: Rectangle {
+                anchors.left: parent.left
+                anchors.right: parent.right
+                height:40
+
+                Text {
+                    anchors.centerIn: parent
+                    text: contactsModel.count + " Contacts"
+                    color: "#aaaaaa"
+                }
+
+            }
         }
 
         states: [
