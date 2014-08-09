@@ -26,5 +26,8 @@
         <file>components/SampleContacts.qml</file>
         <file>images/alphabet-scroller-labels.png</file>
         <file>pages/ContactViewPage.qml</file>
+        <file>images/blue-handle.png</file>
+        <file>images/blue-bubble.png</file>
+        <file>images/back-chevron.png</file>
     </qresource>
 </RCC>

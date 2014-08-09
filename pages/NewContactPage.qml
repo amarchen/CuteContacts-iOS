@@ -42,12 +42,6 @@ Item {
         anchors.top: titleBar.bottom
         anchors.bottom: parent.bottom
 
-
-
-//        style: ScrollViewStyle {
-//            transientScrollBars: true
-//        }
-
         Rectangle {
             id: flickableBackground
             width: mainScrollView.width

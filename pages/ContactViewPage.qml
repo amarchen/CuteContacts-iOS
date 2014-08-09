@@ -62,6 +62,7 @@ Item {
                 anchors.right: parent.right
                 anchors.top: name.top
                 anchors.topMargin: 80
+                height: 50
 
                 Text {
                     id: phoneTypeLabel
@@ -73,6 +74,50 @@ Item {
                     color: Settings.colorActiveBlue
 
                     text: "mobile"
+                }
+
+                Text {
+                    id: phoneNumberText
+                    anchors.left: parent.left
+                    anchors.leftMargin: 38
+                    anchors.top: phoneTypeLabel.bottom
+                    anchors.topMargin: 4
+                    height: implicitHeight
+
+                    text: mobileNumber
+                }
+
+                Image {
+                    id: phoneHandleIcon
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.rightMargin: 10
+                    width: 30
+                    height: width
+                    source: "../images/blue-handle.png"
+                }
+
+                Image {
+                    anchors.right: phoneHandleIcon.left
+                    anchors.verticalCenter: phoneHandleIcon.verticalCenter
+                    anchors.rightMargin: 10
+                    width: phoneHandleIcon.width
+                    height: phoneHandleIcon.height
+                    source: "../images/blue-bubble.png"
+                }
+
+                Rectangle {
+                    id: underliner
+                    anchors.left: phoneTypeLabel.left
+                    anchors.right: parent.right
+                    anchors.bottom: parent.bottom
+                    height: 1
+                    color: "#cccccc"
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: pageStack.push("qrc:///pages/NotYetImplemented.qml")
                 }
             }
         }
