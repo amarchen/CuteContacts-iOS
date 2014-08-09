@@ -275,6 +275,10 @@ Item {
                     contactList.scrollToSection(sectionForMouseY(mouse.y))
                 }
 
+                onPressed: {
+                    contactList.scrollToSection(sectionForMouseY(mouse.y))
+                }
+
                 function sectionForMouseY(mouseY) {
                     // empty areas at top and bottom should be treated as first/last letters
                     var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
