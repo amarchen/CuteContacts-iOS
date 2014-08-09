@@ -97,7 +97,7 @@ Rectangle {
                     width: 75
                     clip: true
                     elide: Text.ElideRight
-                    color: "#0079ff"
+                    color: Settings.colorActiveBlue
                 }
 
                 Image {

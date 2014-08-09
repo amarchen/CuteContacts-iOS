@@ -31,7 +31,7 @@ Rectangle {
             anchors.leftMargin: 10
             anchors.right: parent.right
             text: "add phone"
-            color: "#0079ff"
+            color: Settings.colorActiveBlue
         }
 
         Rectangle {

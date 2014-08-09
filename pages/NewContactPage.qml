@@ -3,6 +3,7 @@ import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.1
 
 import "../components"
+import "../settings.js" as Settings
 
 /**
  * @TODO report that it'd be nice to set iOS style even when running on desktop
@@ -123,7 +124,7 @@ Item {
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     text: "add\nphoto"
-                    color: "#0079ff"
+                    color: Settings.colorActiveBlue
                     font.pixelSize: 12
                 }
 

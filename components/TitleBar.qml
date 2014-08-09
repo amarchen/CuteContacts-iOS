@@ -1,6 +1,8 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.1
 
+import "../settings.js" as Settings
+
 /**
  * buttonIconSoure and buttonText properties are mutually exclusive. Ideally setting one should clear another one.
  * Right now just don't set both
@@ -78,7 +80,7 @@ Rectangle {
         clip: true
         font.family: "Helvetica Neue"
         font.pointSize: 18
-        color: "#0079ff"
+        color: Settings.colorActiveBlue
         onClicked: titleBar.leftButtonClicked()
     }
 
@@ -95,7 +97,7 @@ Rectangle {
         clip: true
         font.family: "Helvetica Neue"
         font.pointSize: 18
-        color: "#0079ff"
+        color: Settings.colorActiveBlue
         onClicked: titleBar.rightButtonClicked()
     }
 

@@ -3,6 +3,7 @@ import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.1
 
 import "../components"
+import "../settings.js" as Settings
 
 Item {
     id: wholePage
@@ -128,7 +129,7 @@ Item {
                 clip: true
                 font.family: "Helvetica Neue"
                 font.pointSize: 18
-                color: "#0079ff"
+                color: Settings.colorActiveBlue
                 dimmingColor: "#c9c9ce"
                 text: "Cancel"
                 onClicked: {
@@ -207,7 +208,8 @@ Item {
                 }
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: pageStack.push("qrc:///pages/NotYetImplemented.qml")
+                    onClicked: pageStack.push("qrc:///pages/ContactViewPage.qml",
+                                              {firstName: firstName, lastName: lastName, mobileNumber: mobileNumber})
                 }
             }
 

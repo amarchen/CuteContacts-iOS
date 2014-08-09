@@ -25,5 +25,6 @@
         <file>pages/NotYetImplemented.qml</file>
         <file>components/SampleContacts.qml</file>
         <file>images/alphabet-scroller-labels.png</file>
+        <file>pages/ContactViewPage.qml</file>
     </qresource>
 </RCC>
