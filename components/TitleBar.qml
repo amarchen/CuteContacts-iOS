@@ -64,13 +64,17 @@ Rectangle {
         onClicked: titleBar.rightButtonClicked()
     }
 
+    // @TODO: make areas close to title bar area edges clickable too (under margin right now)
     DimmableTextButton {
         id: leftTextButton
         visible: text.length > 0
 
         anchors.left: parent.left
         anchors.leftMargin: 8
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        verticalAlignment: Text.AlignVCenter
+
         clip: true
         font.family: "Helvetica Neue"
         font.pointSize: 18
@@ -84,7 +88,10 @@ Rectangle {
 
         anchors.right: parent.right
         anchors.rightMargin: 8
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        verticalAlignment: Text.AlignVCenter
+
         clip: true
         font.family: "Helvetica Neue"
         font.pointSize: 18

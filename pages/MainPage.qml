@@ -27,6 +27,8 @@ Item {
 
             title: "All Contacts"
 
+            leftButtonText: "Groups"
+            onLeftButtonClicked: pageStack.push("qrc:///pages/NotYetImplemented.qml")
             rightButtonIconSource: "qrc:///images/plus.png"
             onRightButtonClicked: pageStack.push("qrc:///pages/NewContactPage.qml")
 
