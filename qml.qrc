@@ -23,5 +23,6 @@
         <file>components/AddPhoneLine.qml</file>
         <file>settings.js</file>
         <file>pages/NotYetImplemented.qml</file>
+        <file>components/SampleContacts.qml</file>
     </qresource>
 </RCC>
