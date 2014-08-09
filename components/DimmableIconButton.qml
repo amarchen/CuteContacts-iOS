@@ -14,9 +14,26 @@ import QtQuick 2.0
  *
  * @TODO: Mention missing dimming goes away on distant dragging in the docs
  */
-Image {
+Item {
     signal clicked
     property alias dimmingColor: dimmer.color
+    property alias source: buttonImage.source
+    property alias imageWidth: buttonImage.width
+    property alias imageHeight: buttonImage.height
+
+//    color: "lightblue"
+
+    Image {
+        id: buttonImage
+        anchors.centerIn: parent
+    }
+
+    Rectangle {
+        id: dimmer
+        anchors.fill: parent
+        color: "#f6f5f1"
+        opacity: 0.0
+    }
 
     MouseArea {
         id: buttonArea
@@ -24,12 +41,6 @@ Image {
         onClicked: {
             parent.clicked()
         }
-    }
-    Rectangle {
-        id: dimmer
-        anchors.fill: parent
-        color: "#f6f5f1"
-        opacity: 0.0
     }
 
     states: [

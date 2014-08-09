@@ -42,8 +42,10 @@ Rectangle {
         anchors.leftMargin: 18
         anchors.verticalCenter: parent.verticalCenter
 
-        width: 18
-        height: 18
+        width: height
+        height: parent.height
+        imageWidth: 18
+        imageHeight: 18
         onClicked: titleBar.leftButtonClicked()
     }
 
@@ -53,11 +55,12 @@ Rectangle {
         visible: source.toString().length > 0
 
         anchors.right: parent.right
-        anchors.rightMargin: 18
         anchors.verticalCenter: parent.verticalCenter
 
-        width: 18
-        height: 18
+        width: height
+        height: parent.height
+        imageWidth: 18
+        imageHeight: 18
         onClicked: titleBar.rightButtonClicked()
     }
 
