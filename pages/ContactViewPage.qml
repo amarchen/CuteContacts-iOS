@@ -23,8 +23,10 @@ Item {
         title: ""
 
         // @TODO: Do proper shevron
-        leftButtonText: "< All Contacts"
+        leftButtonText: "All Contacts"
         onLeftButtonClicked: pageStack.pop()
+
+        backChevron: true
 
         rightButtonText: "Edit"
         onRightButtonClicked: pageStack.push("qrc:///pages/NotYetImplemented.qml")

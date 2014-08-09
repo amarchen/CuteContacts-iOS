@@ -18,6 +18,9 @@ Rectangle {
     property alias rightButtonText: rightTextButton.text
     property alias leftButtonIconSource: leftIconButton.source
     property alias leftButtonText: leftTextButton.text
+
+    property bool backChevron: false
+
     signal leftButtonClicked
     signal rightButtonClicked
 
@@ -36,20 +39,67 @@ Rectangle {
         font.pointSize: 17
     }
 
-    DimmableIconButton {
-        id: leftIconButton
-        visible: source.toString().length > 0
-
+    // @TODO: dim on the whole action level, not on the label/icon level. At the moment chevron isn't dimmed at all
+    Item {
+        id: leftActionBlock
         anchors.left: parent.left
-        anchors.leftMargin: 18
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        width: childrenRect.width
 
-        width: height
-        height: parent.height
-        imageWidth: 18
-        imageHeight: 18
-        onClicked: titleBar.leftButtonClicked()
+        // Capturing not handled by individual areas
+        MouseArea {
+            anchors.fill: parent
+            onClicked: titleBar.leftButtonClicked()
+        }
+
+        Image {
+            id: backChevronIcon
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.leftMargin: 4
+            visible: backChevron
+            width: sourceSize.width / 2
+            height: sourceSize.height / 2
+
+            source: "../images/back-chevron.png"
+        }
+
+        DimmableIconButton {
+            id: leftIconButton
+            visible: source.toString().length > 0
+
+            anchors.left: backChevronIcon.right
+            anchors.leftMargin: 16
+            anchors.verticalCenter: parent.verticalCenter
+
+            width: height
+            height: parent.height
+            imageWidth: 18
+            imageHeight: 18
+            onClicked: titleBar.leftButtonClicked()
+        }
+
+        DimmableTextButton {
+            id: leftTextButton
+            visible: text.length > 0
+
+            anchors.left: backChevron ? backChevronIcon.right : parent.left
+            anchors.leftMargin: 6
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            verticalAlignment: Text.AlignVCenter
+
+            clip: true
+            font.family: "Helvetica Neue"
+            font.pointSize: 18
+            color: Settings.colorActiveBlue
+            onClicked: titleBar.leftButtonClicked()
+        }
+
     }
+
+
 
 
     DimmableIconButton {
@@ -66,23 +116,8 @@ Rectangle {
         onClicked: titleBar.rightButtonClicked()
     }
 
-    // @TODO: make areas close to title bar area edges clickable too (under margin right now)
-    DimmableTextButton {
-        id: leftTextButton
-        visible: text.length > 0
+    // @TODO: make areas close to title bar area right edge clickable too (under margin right now)
 
-        anchors.left: parent.left
-        anchors.leftMargin: 8
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        verticalAlignment: Text.AlignVCenter
-
-        clip: true
-        font.family: "Helvetica Neue"
-        font.pointSize: 18
-        color: Settings.colorActiveBlue
-        onClicked: titleBar.leftButtonClicked()
-    }
 
     DimmableTextButton {
         id: rightTextButton
