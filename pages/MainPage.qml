@@ -178,43 +178,48 @@ Item {
                 }
                 Rectangle {
                     id: underliner
-                    anchors.left: contactNameLabel.left
+
+                    // next section is undefined for the very first element and.. somehow for the very first delegate
+                    // but for the prototyping purposes we just make sure there's more than one element in first section
+                    anchors.left: isLastElementInSection(index, parent.ListView.section, parent.ListView.nextSection) ?
+                                  parent.left : contactNameLabel.left
+
+//                    anchors.left: contactNameLabel.left
                     anchors.right: contactNameLabel.right
                     anchors.top: contactNameLabel.bottom
                     anchors.topMargin: -1
                     height: 1
 
-                    // next section is undefined for the very first element and.. somehow for the very first delegate
-                    // but for the prototyping purposes we just make sure there's more than one element in first section
-                    visible: (!parent.ListView.nextSection) || parent.ListView.section == parent.ListView.nextSection
+//                    visible: (!parent.ListView.nextSection) || parent.ListView.section == parent.ListView.nextSection
 
                     color: "#cccccc"
+
+                    function isLastElementInSection(index, currSection, nextSection) {
+                        // next section is undefined for the very last element and.. somehow for the very first delegate
+                        // but for the prototyping purposes we just make sure there's more than one element in first section
+                        if(index === 0) return false
+                        if(typeof(nextSection) == "undefined") return true
+
+                        return currSection != nextSection
+                    }
                 }
             }
 
             section.delegate: Rectangle {
+                id: sectionDelegate
                 width: parent.width
-                height: 30
+                height: 18
                 color: "#eeeeee"
                 Text {
                     id: sectionLabel
                     anchors.fill: parent
                     anchors.leftMargin: 10
                     anchors.rightMargin: 5
+                    anchors.topMargin: 2
                     font.bold: true
                     font.pixelSize: 14
                     verticalAlignment: Text.AlignVCenter
                     text: section
-                }
-                Rectangle {
-                    id: overliner
-                    anchors.left: parent.left
-                    anchors.right: sectionLabel.right
-                    anchors.top: sectionLabel.top
-                    anchors.topMargin: 1
-                    height: 1
-
-                    color: "#cccccc"
                 }
             }
 
