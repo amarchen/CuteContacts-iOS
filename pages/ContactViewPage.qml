@@ -142,8 +142,6 @@ Item {
                     text: "Notes"
                 }
 
-
-
                 TextArea {
                     id: notesField
                     anchors.left: parent.left
@@ -162,12 +160,92 @@ Item {
                 }
                 Rectangle {
                     id: notesUnderliner
-                    anchors.left: notesField.left
+                    anchors.left: parent.left
+                    anchors.leftMargin: 38
                     anchors.right: parent.right
                     anchors.top: notesField.bottom
                     anchors.topMargin: 48
                     height: 1
                     color: "#cccccc"
+                }
+            }
+
+            Item{
+                id: sendMessageLine
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.top: notesBlock.bottom
+                anchors.topMargin: 10
+                height: 38
+                Text {
+                    anchors.left: parent.left
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.leftMargin: 38
+                    height: implicitHeight
+                    color: Settings.colorActiveBlue
+                    text: "Send Message"
+                }
+                Rectangle {
+                    anchors.left: parent.left
+                    anchors.leftMargin: 38
+                    anchors.right: parent.right
+                    anchors.bottom: parent.bottom
+                    height: 1
+                    color: "#cccccc"
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: pageStack.push("qrc:///pages/NotYetImplemented.qml")
+                }
+            }
+
+            Item{
+                id: shareContactLine
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.top: sendMessageLine.bottom
+                height: 38
+                Text {
+                    anchors.left: parent.left
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.leftMargin: 38
+                    height: implicitHeight
+                    color: Settings.colorActiveBlue
+                    text: "Share Contact"
+                }
+                Rectangle {
+                    anchors.left: parent.left
+                    anchors.leftMargin: 38
+                    anchors.right: parent.right
+                    anchors.bottom: parent.bottom
+                    height: 1
+                    color: "#cccccc"
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: pageStack.push("qrc:///pages/NotYetImplemented.qml")
+                }
+            }
+
+            Item{
+                id: addToFavorites
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.top: shareContactLine.bottom
+                height: 38
+                Text {
+                    anchors.left: parent.left
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.leftMargin: 38
+                    height: implicitHeight
+                    color: Settings.colorActiveBlue
+                    text: "Add to Favorites"
+                }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: pageStack.push("qrc:///pages/NotYetImplemented.qml")
                 }
             }
         }
