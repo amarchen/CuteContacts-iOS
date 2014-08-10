@@ -160,6 +160,15 @@ Item {
 
                     text: "hello"
                 }
+                Rectangle {
+                    id: notesUnderliner
+                    anchors.left: notesField.left
+                    anchors.right: parent.right
+                    anchors.top: notesField.bottom
+                    anchors.topMargin: 48
+                    height: 1
+                    color: "#cccccc"
+                }
             }
         }
     }
