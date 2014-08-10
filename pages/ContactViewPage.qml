@@ -122,6 +122,45 @@ Item {
                     onClicked: pageStack.push("qrc:///pages/NotYetImplemented.qml")
                 }
             }
+
+            Item {
+                id: notesBlock
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.top: phoneBlock.bottom
+                height: childrenRect.height
+
+                Text {
+                    id: notesFieldTitle
+                    anchors.left: parent.left
+                    anchors.top: parent.top
+                    height: implicitHeight
+                    anchors.leftMargin: 38
+                    anchors.topMargin: 10
+
+                    color: "#cccccc"
+                    text: "Notes"
+                }
+
+
+
+                TextArea {
+                    id: notesField
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.top: notesFieldTitle.bottom
+                    anchors.leftMargin: 34
+                    anchors.rightMargin: 18
+                    anchors.topMargin: 6
+                    property int lineHeight: 14
+
+                    height: lineHeight * (lineCount+1)
+
+                    frameVisible: false
+
+                    text: "hello"
+                }
+            }
         }
     }
 }
