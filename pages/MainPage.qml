@@ -36,12 +36,13 @@ Item {
         }
         Rectangle {
             id: searchBar
+            property alias text: searchField.text
+
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: titleBar.bottom
             height: 43
             color: "#c9c9ce"
-
 
             Rectangle {
                 id: searchFieldWrapper
@@ -119,6 +120,10 @@ Item {
 
             }
 
+            onTextChanged: {
+                updateFilteredModel(text)
+            }
+
             DimmableTextButton {
                 id: cancelLabel
 
@@ -154,9 +159,13 @@ Item {
             id: contactsModel
         }
 
+        ListModel {
+            id: filteredContactsModel
+        }
+
         ListView {
             id: contactList
-            model: contactsModel
+            model: filteredContactsModel
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.top: searchBar.bottom
@@ -343,8 +352,24 @@ Item {
 
     }
 
+    // @param filterText can be null or undefined as well
+    function updateFilteredModel(filterText) {
+        if(!filterText) filterText = ""
+        filterText = filterText.toLowerCase()
+
+        filteredContactsModel.clear()
+        for(var i=0; i < contactsModel.count; i++ ) {
+            var curr = contactsModel.get(i)
+            if(curr.firstName.toLowerCase().indexOf(filterText) !== -1 ||
+               curr.lastName.toLowerCase().indexOf(filterText) !== -1) {
+                filteredContactsModel.append(curr)
+            }
+        }
+    }
+
     Component.onCompleted: {
         console.log("MainPage completed. Platform OS is " + Qt.platform.os)
+        updateFilteredModel(null)
     }
 
 }
