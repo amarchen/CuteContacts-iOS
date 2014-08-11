@@ -29,5 +29,6 @@
         <file>images/blue-handle.png</file>
         <file>images/blue-bubble.png</file>
         <file>images/back-chevron.png</file>
+        <file>images/avatar-round.png</file>
     </qresource>
 </RCC>

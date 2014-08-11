@@ -45,12 +45,23 @@ Item {
             height: 1000
             color: "white"
 
-            Text {
-                id: name
+            Image {
+                id: avatar
                 anchors.top: parent.top
                 anchors.left: parent.left
-                anchors.topMargin: 30
+                anchors.topMargin: 6
                 anchors.leftMargin: 38
+                width: sourceSize.width /2
+                height: sourceSize.height /2
+
+                source: "../images/avatar-round.png"
+            }
+
+            Text {
+                id: name
+                anchors.verticalCenter: avatar.verticalCenter
+                anchors.left: avatar.right
+                anchors.leftMargin: 10
                 height: implicitHeight
 
                 font.bold: true
