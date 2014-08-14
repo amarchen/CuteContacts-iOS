@@ -71,9 +71,48 @@ Item {
                 }
             }
 
-//            Rectangle {
-//                id: topMenuPart
-//            }
+            Rectangle {
+                id: topMenuPart
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.bottom: cancelButton.top
+                anchors.bottomMargin: 8
+                height: 88
+                radius: 4
+
+                Item {
+                    id: menuTitle
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+                    anchors.bottom: parent.verticalCenter
+                    Text {
+                        anchors.centerIn: parent
+                        font.pixelSize: 12
+                        color: "#eeeeee"
+                        text: "Add to Favorites"
+                    }
+                }
+                Rectangle {
+                    id: divider
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.top: menuTitle.bottom
+                    height: 1
+                    color: "#cccccc"
+                }
+                Item {
+                    id: mobileNumberItem
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.top: divider.bottom
+                    anchors.bottom: parent.bottom
+                    Text {
+                        anchors.centerIn: parent
+                        text: "mobile: +0223"
+                    }
+                }
+            }
         }
     }
 
