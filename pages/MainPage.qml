@@ -338,6 +338,10 @@ Item {
                         Qt.inputMethod.hide()
                     }
                 }
+                PropertyChanges {
+                    target: searchField
+                    text: ""
+                }
             }
 
         ]
