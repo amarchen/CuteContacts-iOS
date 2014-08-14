@@ -1,16 +1,13 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
 import QtQuick.Controls.Styles 1.1
+import QtGraphicalEffects 1.0
 
 import "../components"
 import "../settings.js" as Settings
 
-Item {
+IOSPage {
     id: wholePage
-
-    onYChanged: {
-        console.log("MainPage's y ch to " + y)
-    }
 
     MouseArea {
         id: pageArea
@@ -29,10 +26,11 @@ Item {
             title: "All Contacts"
 
             leftButtonText: "Groups"
-            onLeftButtonClicked: pageStack.push("qrc:///pages/NotYetImplemented.qml")
+
+            // just as a tmp trial for now
+            onLeftButtonClicked: showMenu()
             rightButtonIconSource: "qrc:///images/plus.png"
             onRightButtonClicked: pageStack.push("qrc:///pages/NewContactPage.qml")
-
         }
         Rectangle {
             id: searchBar

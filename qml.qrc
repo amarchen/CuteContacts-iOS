@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>components/Page.qml</file>
         <file>pages/MainPage.qml</file>
         <file>pages/NewContactPage.qml</file>
         <file>images/plus.png</file>
@@ -30,5 +29,6 @@
         <file>images/blue-bubble.png</file>
         <file>images/back-chevron.png</file>
         <file>images/avatar-round.png</file>
+        <file>components/IOSPage.qml</file>
     </qresource>
 </RCC>
