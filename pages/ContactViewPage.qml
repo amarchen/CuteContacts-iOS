@@ -5,7 +5,7 @@ import QtQuick.Controls.Styles 1.1
 import "../components"
 import "../settings.js" as Settings
 
-Item {
+IOSPage {
     id: wholePage
     focus: true
 
@@ -256,7 +256,7 @@ Item {
                 }
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: pageStack.push("qrc:///pages/NotYetImplemented.qml")
+                    onClicked: showMenu()
                 }
             }
         }

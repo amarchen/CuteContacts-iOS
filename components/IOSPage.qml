@@ -8,7 +8,7 @@ import "../settings.js" as Settings
 Item {
     id: wholePage
     default property alias contents: pageContent.children
-    property bool _menuIsActive: true//false
+    property bool _menuIsActive: false
 
     function showMenu() {
         console.log("showMenu")
@@ -37,7 +37,7 @@ Item {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        wholePage.state = ""
+                        _menuIsActive = false
                     }
                 }
             }
@@ -89,7 +89,7 @@ Item {
                     Text {
                         anchors.centerIn: parent
                         font.pixelSize: 12
-                        color: "#eeeeee"
+                        color: "#777777"
                         text: "Add to Favorites"
                     }
                 }
