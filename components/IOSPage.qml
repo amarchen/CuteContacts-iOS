@@ -8,23 +8,11 @@ import "../settings.js" as Settings
 Item {
     id: wholePage
     default property alias contents: pageContent.children
+    property alias menu: backgroundOverlay.menu
     property string mobileNumber: ""
     property bool _menuIsActive: false
 
-    property Item menu: Item {}
-
-    onMenuChanged: {
-        if(menu) {
-            menu.parent = backgroundOverlay
-            menu.anchors.left = backgroundOverlay.left
-            menu.anchors.right = backgroundOverlay.right
-            menu.anchors.bottom = backgroundOverlay.bottom
-        }
-    }
-
-
     function showMenu() {
-        console.log("showMenu")
         _menuIsActive = true
     }
 
@@ -56,10 +44,16 @@ Item {
             }
         }
 
-//        AddToFavoritesMenu {
-//            id: menu
-//        }
+        property Item menu: Item {}
 
+        onMenuChanged: {
+            if(menu) {
+                menu.parent = backgroundOverlay
+                menu.anchors.left = backgroundOverlay.left
+                menu.anchors.right = backgroundOverlay.right
+                menu.anchors.top = backgroundOverlay.bottom
+            }
+        }
     }
 
     states: [
@@ -69,6 +63,11 @@ Item {
             PropertyChanges {
                 target: backgroundOverlay
                 visible: true
+            }
+            AnchorChanges {
+                target: menu
+                anchors.top: undefined
+                anchors.bottom: backgroundOverlay.bottom
             }
             StateChangeScript {
                 script: console.log("state ch to menuIsActive")

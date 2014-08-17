@@ -3,10 +3,11 @@ import "../settings.js" as Settings
 
 Item {
     id: menu
-    height: 80
+    height: cancelButton.height + topMenuPart.height + topMenuPart.anchors.bottomMargin
     anchors.leftMargin: 8
     anchors.rightMargin: anchors.leftMargin
     anchors.bottomMargin: anchors.leftMargin
+
     Rectangle {
         id: cancelButton
         anchors.left: parent.left
@@ -32,39 +33,62 @@ Item {
         anchors.right: parent.right
         anchors.bottom: cancelButton.top
         anchors.bottomMargin: 8
-        height: 88
+        height: menuTitle.height + divider.height + mobileNumberItem.height
         radius: 4
+
+        Item {
+            id: mobileNumberItem
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            height: 44
+            Item {
+                id: mobileNumberWrapper
+                anchors.centerIn: parent
+                width: mobileNumberTypeText.width + numberText.width
+
+                Text {
+                    id: mobileNumberTypeText
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.left: parent.left
+                    width: implicitWidth
+                    font.pixelSize: 20
+                    text: "mobile "
+                }
+                Text {
+                    id: numberText
+                    anchors.left: mobileNumberTypeText.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    font.pixelSize: 20
+                    color: Settings.colorActiveBlue
+                    text: mobileNumber
+                }
+            }
+
+
+        }
+
+        Rectangle {
+            id: divider
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: mobileNumberItem.top
+            height: 1
+            color: "#cccccc"
+        }
+
 
         Item {
             id: menuTitle
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.top: parent.top
-            anchors.bottom: parent.verticalCenter
+            anchors.bottom: divider.top
+            height: 48
             Text {
                 anchors.centerIn: parent
-                font.pixelSize: 12
-                color: "#777777"
+                font.pixelSize: 13
+                color: "#888888"
                 text: "Add to Favorites"
-            }
-        }
-        Rectangle {
-            id: divider
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.top: menuTitle.bottom
-            height: 1
-            color: "#cccccc"
-        }
-        Item {
-            id: mobileNumberItem
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.top: divider.bottom
-            anchors.bottom: parent.bottom
-            Text {
-                anchors.centerIn: parent
-                text: "mobile: " + mobileNumber
             }
         }
     }
