@@ -11,3 +11,6 @@ QML_IMPORT_PATH =
 
 # Default rules for deployment.
 include(deployment.pri)
+
+OTHER_FILES += \
+    images/share-contact-menu.png

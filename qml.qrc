@@ -31,5 +31,7 @@
         <file>images/avatar-round.png</file>
         <file>components/IOSPage.qml</file>
         <file>components/AddToFavoritesMenu.qml</file>
+        <file>components/ShareContactMenu.qml</file>
+        <file>images/share-contact-menu.png</file>
     </qresource>
 </RCC>

@@ -11,7 +11,9 @@ IOSPage {
 
     property string firstName: "John"
     property string lastName: "Smith"
-//    property string mobileNumber: "+333-455-3221"
+
+    property Item _favsMenu: AddToFavoritesMenu {}
+    property Item _shareMenu: ShareContactMenu {}
 
     TitleBar {
         id: titleBar
@@ -236,7 +238,10 @@ IOSPage {
 
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: pageStack.push("qrc:///pages/NotYetImplemented.qml")
+                    onClicked: {
+                        menu = _shareMenu
+                        showMenu()
+                    }
                 }
             }
 
@@ -256,11 +261,13 @@ IOSPage {
                 }
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: showMenu()
+                    onClicked: {
+                        menu = _favsMenu
+                        showMenu()
+                    }
                 }
             }
         }
     }
 
-    menu: AddToFavoritesMenu {}
 }
