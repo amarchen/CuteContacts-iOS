@@ -8,6 +8,7 @@ import "../settings.js" as Settings
 Item {
     id: wholePage
     default property alias contents: pageContent.children
+    property string mobileNumber: ""
     property bool _menuIsActive: false
 
     function showMenu() {
@@ -109,7 +110,7 @@ Item {
                     anchors.bottom: parent.bottom
                     Text {
                         anchors.centerIn: parent
-                        text: "mobile: +0223"
+                        text: "mobile: " + mobileNumber
                     }
                 }
             }

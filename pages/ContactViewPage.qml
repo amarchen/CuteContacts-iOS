@@ -11,7 +11,7 @@ IOSPage {
 
     property string firstName: "John"
     property string lastName: "Smith"
-    property string mobileNumber: "+333-455-3221"
+//    property string mobileNumber: "+333-455-3221"
 
     TitleBar {
         id: titleBar
