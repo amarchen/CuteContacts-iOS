@@ -261,4 +261,6 @@ IOSPage {
             }
         }
     }
+
+    menu: AddToFavoritesMenu {}
 }

@@ -30,5 +30,6 @@
         <file>images/back-chevron.png</file>
         <file>images/avatar-round.png</file>
         <file>components/IOSPage.qml</file>
+        <file>components/AddToFavoritesMenu.qml</file>
     </qresource>
 </RCC>
