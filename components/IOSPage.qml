@@ -23,8 +23,9 @@ Item {
 
     Item {
         id: backgroundOverlay
-        visible: false
         anchors.fill: parent
+        visible: false
+        opacity: 0
 
         Desaturate {
             anchors.fill: parent
@@ -62,6 +63,10 @@ Item {
             when: _menuIsActive
             PropertyChanges {
                 target: backgroundOverlay
+                opacity: 1
+            }
+            PropertyChanges {
+                target: backgroundOverlay
                 visible: true
             }
             AnchorChanges {
@@ -69,8 +74,49 @@ Item {
                 anchors.top: undefined
                 anchors.bottom: backgroundOverlay.bottom
             }
-            StateChangeScript {
-                script: console.log("state ch to menuIsActive")
+        }
+    ]
+
+    // First make things visible (even with opacity 0), then increase opacity
+    transitions: [
+        Transition {
+            from: "*"
+            to: "menuIsActive"
+            SequentialAnimation {
+                PropertyAnimation {
+                    properties: "visible"
+                }
+                ParallelAnimation {
+                    AnchorAnimation {
+                        easing.type: Easing.InOutQuad
+                        duration: 80
+                    }
+                    PropertyAnimation {
+                        properties: "opacity"
+                        duration: 50
+                        easing.type: Easing.InOutQuad
+                    }
+                }
+            }
+        },
+        Transition {
+            from: "menuIsActive"
+            to: "*"
+            SequentialAnimation {
+                ParallelAnimation {
+                    AnchorAnimation {
+                        easing.type: Easing.InOutQuad
+                        duration: 80
+                    }
+                    PropertyAnimation {
+                        properties: "opacity"
+                        duration: 80
+                        easing.type: Easing.InOutQuad
+                    }
+                }
+                PropertyAnimation {
+                    properties: "visible"
+                }
             }
         }
 
