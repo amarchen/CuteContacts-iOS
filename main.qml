@@ -16,36 +16,82 @@ ApplicationWindow {
         anchors.top: parent.top
         anchors.topMargin: fakeStatusBar.height
         anchors.bottom: parent.bottom
+
         onYChanged: {
             console.log("pageStack y ch to " + y)
         }
 
         delegate: StackViewDelegate {
-            pushTransition: StackViewTransition {
-                PropertyAnimation {
-                    target: enterItem
-                    property: "y"
-                    from: 568
-                    to: 0
-                    easing.type: Easing.InOutQuad
-                    duration: 300
+
+            function getTransition(properties)
+            {
+                var usedPushTransition = properties.enterItem.pushTransition ? properties.enterItem.pushTransition : pageStack.transitionPopFromBottom
+                var usedPopTransition = properties.exitItem.popTransition ? properties.exitItem.popTransition : pageStack.transitionSlideToBottom
+
+                if(properties.name == "pushTransition") {
+                    return usedPushTransition
+                } else if(properties.name == "popTransition") {
+                    return usedPopTransition
+                } else {
+                    console.error("Requested unexpected transition type " + properties.name)
                 }
             }
-            popTransition: StackViewTransition {
+
+        }
+
+        property Component transitionSlideFromRight: Component {
+            StackViewTransition {
+                PropertyAnimation {
+                    target: enterItem
+                    property: "x"
+                    from: 320
+                    to: 0
+                    easing.type: Easing.InOutQuad
+                    duration: 200
+                }
+            }
+        }
+
+        property Component transitionSlideToRight: Component {
+            StackViewTransition {
+                PropertyAnimation {
+                    target: exitItem
+                    property: "x"
+                    from: 0
+                    to: 320
+                    easing.type: Easing.InOutQuad
+                    duration: 200
+                }
+            }
+        }
+
+        property Component transitionSlideToBottom: Component {
+            StackViewTransition {
                 PropertyAnimation {
                     target: exitItem
                     property: "y"
                     from: 0
                     to: 568
                     easing.type: Easing.InOutQuad
-                    duration: 300
+                    duration: 200
                 }
             }
         }
 
-//        initialItem: NewContactPage {
 
-//        }
+        property Component transitionPopFromBottom: Component {
+            StackViewTransition {
+                PropertyAnimation {
+                    target: enterItem
+                    property: "y"
+                    from: 568
+                    to: 0
+                    easing.type: Easing.InOutQuad
+                    duration: 200
+                }
+        }
+        }
+
 
         initialItem: MainPage {
         }

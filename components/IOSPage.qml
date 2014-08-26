@@ -12,6 +12,10 @@ Item {
     property string mobileNumber: ""
     property bool _menuIsActive: false
 
+    // if null, the default ones are used
+    property var pushTransition: null
+    property var popTransition: null
+
     function showMenu() {
         _menuIsActive = true
     }

@@ -216,7 +216,9 @@ IOSPage {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: pageStack.push("qrc:///pages/ContactViewPage.qml",
-                                              {firstName: firstName, lastName: lastName, mobileNumber: mobileNumber})
+                                              {firstName: firstName, lastName: lastName, mobileNumber: mobileNumber,
+                                               pushTransition: pageStack.transitionSlideFromRight,
+                                               popTransition: pageStack.transitionSlideToRight})
                 }
             }
 
