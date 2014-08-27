@@ -15,6 +15,12 @@ IOSPage {
     property Item _favsMenu: AddToFavoritesMenu {}
     property Item _shareMenu: ShareContactMenu {}
 
+    Rectangle {
+        id: backgroundFiller
+        anchors.fill: parent
+        color: "white"
+    }
+
     TitleBar {
         id: titleBar
         anchors.left: parent.left
@@ -44,7 +50,7 @@ IOSPage {
         Rectangle {
             id: flickableBackground
             width: mainScrollView.width
-            height: 1000
+            height: childrenRect.height
             color: "white"
 
             Image {
