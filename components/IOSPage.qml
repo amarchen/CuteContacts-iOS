@@ -12,6 +12,8 @@ Item {
     property string mobileNumber: ""
     property bool _menuIsActive: false
 
+    property alias backgroundColor: pageContent.color
+
     // if null, the default ones are used
     property var pushTransition: null
     property var popTransition: null
@@ -20,9 +22,10 @@ Item {
         _menuIsActive = true
     }
 
-    Item {
+    Rectangle {
         id: pageContent
         anchors.fill: parent
+        color: "white"
     }
 
     Item {

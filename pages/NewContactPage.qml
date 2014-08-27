@@ -12,7 +12,7 @@ import "../settings.js" as Settings
  * @TODO Position of cursor bar is to be controlled
  */
 
-Item {
+IOSPage {
     id: wholePage
     focus: true
 
@@ -45,7 +45,7 @@ Item {
         Rectangle {
             id: flickableBackground
             width: mainScrollView.width
-            height: 1000
+            height: childrenRect.height
             color: "white"
 
             /** Eats mouse events for the **/
