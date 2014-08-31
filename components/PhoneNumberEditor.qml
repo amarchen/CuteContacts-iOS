@@ -153,6 +153,7 @@ Rectangle {
                 anchors.top: parent.top
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
+                anchors.rightMargin: 24
 
                 placeholderText: "Phone"
                 showUnderline: false

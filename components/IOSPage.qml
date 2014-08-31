@@ -51,6 +51,7 @@ Item {
     Item {
         id: backgroundOverlay
         anchors.fill: parent
+        anchors.topMargin: statusBar.height
         visible: false
         opacity: 0
 

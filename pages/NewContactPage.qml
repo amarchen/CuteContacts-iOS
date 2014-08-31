@@ -156,6 +156,7 @@ IOSPage {
                 anchors.top: companyField.bottom
                 anchors.left: parent.left
                 anchors.right: parent.right
+                anchors.rightMargin: 6
                 anchors.topMargin: 56
 
                 onStartedControlEditing: {
