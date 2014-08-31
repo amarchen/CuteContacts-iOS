@@ -7,14 +7,12 @@ Item {
     visible: true
     width: 320
     height: 568
-//    title: qsTr("Hello World")
 
     StackView {
         id: pageStack
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
-        anchors.topMargin: fakeStatusBar.height
         anchors.bottom: parent.bottom
 
         onYChanged: {
@@ -97,18 +95,17 @@ Item {
         }
     }
 
-    Rectangle {
-        id: fakeStatusBar
+    Image {
+        id: statusBar
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
-        height: Qt.platform.os == "ios" ? 0 : 15
-        color: "#f6f5f1"
-        Image {
-            anchors.fill: parent
-            source: "qrc:///images/status-bar-black.png"
-        }
+        anchors.leftMargin: 8
+        anchors.rightMargin: 8
+        fillMode: Image.PreserveAspectFit
+        source: "../images/black-statusbar.png"
+        height: sourceSize.height / 2
+        z:100
     }
-
 
 }
