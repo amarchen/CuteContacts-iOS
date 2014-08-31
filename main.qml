@@ -97,11 +97,11 @@ Item {
 
     Rectangle {
         id: statusBarWrapper
-        color: "#a3a3a6"
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
         height: childrenRect.height
+        color: "#f6f5f1"
 
         Image {
             id: statusBar
