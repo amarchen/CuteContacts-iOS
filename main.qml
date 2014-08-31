@@ -95,17 +95,22 @@ Item {
         }
     }
 
-    Image {
-        id: statusBar
+    Rectangle {
+        id: statusBarWrapper
+        color: "#a3a3a6"
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
-        anchors.leftMargin: 8
-        anchors.rightMargin: 8
-        fillMode: Image.PreserveAspectFit
-        source: "../images/black-statusbar.png"
-        height: sourceSize.height / 2
-        z:100
+        height: childrenRect.height
+
+        Image {
+            id: statusBar
+            anchors.leftMargin: 8
+            anchors.rightMargin: 8
+            fillMode: Image.PreserveAspectFit
+            source: "../images/black-statusbar.png"
+            height: sourceSize.height / 2
+        }
     }
 
 }

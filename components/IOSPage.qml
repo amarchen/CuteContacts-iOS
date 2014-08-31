@@ -25,7 +25,8 @@ Item {
     Rectangle {
         id: pageContent
         anchors.fill: parent
-        color: "white"
+        anchors.topMargin: statusBar.height
+        color: "#f6f5f1"
     }
 
     Item {
