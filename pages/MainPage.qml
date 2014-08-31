@@ -8,6 +8,7 @@ import "../settings.js" as Settings
 
 IOSPage {
     id: wholePage
+    clip: false
 
     MouseArea {
         id: pageArea

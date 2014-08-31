@@ -29,6 +29,25 @@ Item {
         color: "#f6f5f1"
     }
 
+    // Ugly hack for status bar area dimming. Doesn't have desaturation and just shows gray rectangle on top
+    Item {
+        id: statusBarOverlay
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.topMargin: -5
+        visible: backgroundOverlay.visible
+        opacity: backgroundOverlay.opacity
+        z: 500
+        height: 20
+
+        Rectangle {
+            anchors.fill: parent
+            color: "black"
+            opacity: 0.4
+        }
+    }
+
     Item {
         id: backgroundOverlay
         anchors.fill: parent

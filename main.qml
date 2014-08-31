@@ -8,6 +8,24 @@ Item {
     width: 320
     height: 568
 
+    Rectangle {
+        id: statusBarWrapper
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        height: childrenRect.height
+        color: "#f6f5f1"
+
+        Image {
+            id: statusBar
+            anchors.leftMargin: 8
+            anchors.rightMargin: 8
+            fillMode: Image.PreserveAspectFit
+            source: "../images/black-statusbar.png"
+            height: sourceSize.height / 2
+        }
+    }
+
     StackView {
         id: pageStack
         anchors.left: parent.left
@@ -94,23 +112,4 @@ Item {
         initialItem: MainPage {
         }
     }
-
-    Rectangle {
-        id: statusBarWrapper
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: parent.top
-        height: childrenRect.height
-        color: "#f6f5f1"
-
-        Image {
-            id: statusBar
-            anchors.leftMargin: 8
-            anchors.rightMargin: 8
-            fillMode: Image.PreserveAspectFit
-            source: "../images/black-statusbar.png"
-            height: sourceSize.height / 2
-        }
-    }
-
 }
