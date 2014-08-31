@@ -25,7 +25,14 @@ Item {
         anchors.centerIn: parent
         width: parent.width
         horizontalAlignment: Text.AlignHCenter
-        text: "This feature is not yet implemented"
+        lineHeight: 1.5
+        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+        text: 'This feature is not yet implemented. See more about the project \
+<a href="http://www.codingsubmarine.com/projects/cute-contacts-for-ios/">at CodingSubmarine</a> or \
+at <a href="https://github.com/amarchen/CuteContacts-iOS">github project page</a>'
+        onLinkActivated: {
+            Qt.openUrlExternally(link)
+        }
     }
 
     onFocusChanged: {
